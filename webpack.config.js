@@ -15,12 +15,16 @@ var common = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loaders: ['style', 'css'],
+                test: /\.css?$/,
+                loader: 'style!css',
                 include: path.resolve(ROOT_PATH, 'app')
             }
         ]
     },
+    resolve:{
+        extensions:['','.js','.css']
+    },
+
     plugins: [
         new HtmlwebpackPlugin({
             title: 'Kanban app'
@@ -30,12 +34,12 @@ var common = {
 
 if(TARGET === 'start' || !TARGET) {
     module.exports = merge(common, {
-        devtool: 'eval-source-map',
+        devtool: 'eval',
         module: {
             loaders: [
                 {
                     test: /\.js?$/,
-                    loader: 'babel',
+                    loader: 'react-hot!babel',
                     include: path.resolve(ROOT_PATH, 'app')
                 }
             ]
