@@ -1,5 +1,5 @@
 import React from 'react';
-//import Note from"./Note";
+import Note from"./Note";
 
 export default class Notes extends React.Component {
     render(){
@@ -12,7 +12,7 @@ export default class Notes extends React.Component {
     renderNote(note) {
         return (
             <li className='note' key={`note${note.id}`}>
-               {note.task}
+               <Note task={note.task}/>
             </li>
         );
     }
