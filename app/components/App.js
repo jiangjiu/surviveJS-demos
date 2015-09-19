@@ -1,5 +1,4 @@
 import React from 'react';
-import Note from './Note.js';
 import Notes from './Notes';
 import uuid from'node-uuid';
 
@@ -25,6 +24,7 @@ export default class App extends React.Component{
         };
 
         this.addNote = this.addNote.bind(this);
+        this.editNote = this.editNote.bind(this);
     }
 
 
@@ -34,7 +34,7 @@ export default class App extends React.Component{
         return(
             <div>
                 <button className='add-note' onClick={this.addNote}>+</button>
-                <Notes items={notes}/>
+                <Notes items={notes} onEdit={this.editNote}/>
             </div>
         )
     }
@@ -45,6 +45,9 @@ export default class App extends React.Component{
                 task:'New task'
             }])
         });
+    }
+    editNote(noteId,task){
+        console.log('note edited',noteId,task)
     }
 
 }
